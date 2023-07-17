@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "AIIA Newsletter Agent"
+version = "0.2.0"
+description = ""
+authors = ["AIIA"]
+
+[tool.poetry.dependencies]
+python = "3.10.12"
+numpy = "^1.22.2"
+urllib3 = "^1.26.12"
+bs4 = "^0.0.1"
+guidance = "^0.0.57"
+langchain = "^0.0.234"
+openai = "^0.27.0"
+tiktoken = "^0.4.0"
+nest_asyncio = "^1.5.0"
+schedule = "^1.2.0"
+streamlit = "^1.22.0"
+pypandoc = "^1.11"
+pyairtable = "^1.5.0"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+debugpy = "^1.6.2"
+replit-python-lsp-server = {extras = ["yapf", "rope", "pyflakes"], version = "^1.5.9"}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
