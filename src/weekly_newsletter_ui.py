@@ -21,13 +21,10 @@ asyncio.set_event_loop(loop)
 from dotenv import load_dotenv
 load_dotenv()
 
-# Getting Bot Token From Secrets
-
-BOT_TOKEN_NEWS = os.environ.get('BOT_TOKEN_NEWS')
+# Tokens
 OPEN_AI_KEY = os.environ.get('OPEN_AI_KEY')
-
-AIRTABLE_API_KEY = os.environ['AIRTABLE_API_KEY']
-BASE_ID = 'appEYfGFXlZxhcmSy'
+AIRTABLE_API_KEY = os.environ.get('AIRTABLE_API_KEY')
+BASE_ID = os.environ.get('BASE_ID')
 TABLE_NAME = 'Weekly newsletter'
 
 # LLMs
