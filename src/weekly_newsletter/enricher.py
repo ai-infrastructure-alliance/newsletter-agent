@@ -14,20 +14,15 @@ class Enricher:
     self.db.update_news_from_list(news)
     return n
 
-  def enrich_news_titles(self):
+  def enrich_news_titles_and_summaries(self):
     news = self.db.get_news_with_empty_title()
     n = 0
     for row in news:
-      row.title = self.reader.define_title_by_link(row.link)
-      n += 1
-    self.db.update_news_from_list(news)
-    return n
-
-  def enrich_news_summaries(self):
-    news = self.db.get_news_with_empty_summary()
-    n = 0
-    for row in news:
-      row.summary = self.reader.define_summary_by_link(row.link)
+      result = self.reader.define_title_and_summary_by_link(row.link)
+      if result is None:
+        continue
+      row.title = result["title"]
+      row.summary = result["summary"]
       n += 1
     self.db.update_news_from_list(news)
     return n
@@ -39,12 +34,8 @@ class Enricher:
     n = self.enrich_news_types()
     self.logger.info(f"[Enricher] {n} types enriched")
 
-    self.logger.info("[Enricher] Enriching titles...")
-    n = self.enrich_news_titles()
-    self.logger.info(f"[Enricher] {n} titles enriched")
-
-    self.logger.info("[Enricher] Enriching summaries...")
-    n = self.enrich_news_summaries()
-    self.logger.info(f"[Enricher] {n} summaries enriched")
+    self.logger.info("[Enricher] Enriching titles & summaries...")
+    n = self.enrich_news_titles_and_summaries()
+    self.logger.info(f"[Enricher] {n} summaries & titles enriched")
 
     self.logger.info("[Enricher] Enrichment is complete.")

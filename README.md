@@ -53,3 +53,8 @@ python src/enrich_runner.py
 ```
 streamlit run src/weekly_newsletter_ui.py
 ```
+
+## Models
+
+* Enrichment (i.e. reading and summarizing articles) uses GPT-3.5 by default. You can replace it with GPT-4 in [enrich_runner.py](src/enrich_runner.py), but it's not recommended: the quality of summarization is pretty much the same, but GPT-4 is much slower.
+* Newsletter writer uses GPT-4 by default. You can replace it with GPT-3.5 in [weekly_newsletter_ui.py](src/weekly_newsletter_ui.py). GPT-4 is generally better for complex propmts like the ones used for writing a draft. 
