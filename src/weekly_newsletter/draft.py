@@ -2,6 +2,7 @@ import pickle
 import datetime
 import pypandoc
 import os
+import time
 
 from weekly_newsletter.news_db_airtable import News, NewsState
 
@@ -97,6 +98,7 @@ class Draft:
         if new_title[0] == "\"": new_title = new_title[1:-1]
         section = Section(pick.link, new_title, new_summaries)
         self.data.sections.append(section)
+        time.sleep(30)
     primes = self.get_primes()
     for pick in primes:
       generated_sections = [
@@ -109,6 +111,7 @@ class Draft:
         section = Section(pick.link, new_title, new_summaries)
         section.prime = True
         self.data.sections.append(section)
+        time.sleep(30)
     self.logger.info("Sections are generated.")
 
   def init_sections_refinement(self):
